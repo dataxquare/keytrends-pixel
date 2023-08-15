@@ -30,5 +30,7 @@ module.exports = {
     ],
     "rules": {
         "@typescript-eslint/ban-types": "off",
+        "eslint-disable-next-line prefer-spread": "off",
+        "eslint-disable-next-line prefer-rest-params": "off",
     }
 }

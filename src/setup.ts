@@ -54,9 +54,11 @@ window.addEventListener(pageCloseEvent, function () {
     Config.pageCloseOnce = true;
     new Pixel('pageclose', Helper.now(), function () {
       // if a link was clicked in the last 5 seconds that goes to an external host, pass it through as event data
-      const time = Helper.now().getTime() - Config.externalHost.time.getTime();
+      const time =
+        Helper.now().getTime() -
+        (Config.externalHost as { time: Date }).time.getTime();
       if (Helper.isPresent(Config.externalHost) && time < 5 * 1000) {
-        return Config.externalHost.link;
+        return (Config.externalHost as { link: string }).link;
       }
     });
   }

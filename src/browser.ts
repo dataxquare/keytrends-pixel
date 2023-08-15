@@ -1,9 +1,9 @@
 export class Browser {
   static nameAndVersion(): string {
     // http://stackoverflow.com/questions/5916900/how-can-you-detect-the-version-of-a-browser
-    var ua = navigator.userAgent,
-      tem: any,
-      M =
+    const ua = navigator.userAgent
+    let tem;
+    let M =
         ua.match(
           /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
         ) || [];

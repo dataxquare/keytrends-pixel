@@ -1,22 +1,22 @@
 export class PixelFunc {
-  private window: any;
+  private window;
   private document: Document;
   private script: string;
   private http: string;
   private opix: string;
   private cacheTime: number;
-  public  one: any;
-  private two: any;
-  private three: any;
+  public  one;
+  private two;
+  private three;
 
   constructor(
     script: string,
     http: string,
     opix: string,
     cacheTime: number,
-    one?: any,
-    two?: any,
-    three?: any
+    one?,
+    two?,
+    three?
   ) {
     this.window = window;
     this.document = document;
@@ -34,7 +34,9 @@ export class PixelFunc {
 
     this.window[this.opix] = function () {
       this.one.process
+        // eslint-disable-next-line prefer-spread, prefer-rest-params
         ? this.one.process.apply(this.one, arguments)
+        // eslint-disable-next-line prefer-rest-params
         : this.one.queue.push(arguments);
     };
 
@@ -55,6 +57,6 @@ export class PixelFunc {
   }
 }
 
-export var PixelSetup = new PixelFunc('script', 'JS_URL', 'OPIX_FUNC', 24 * 60 * 60 * 1000);
+export const PixelSetup = new PixelFunc('script', 'JS_URL', 'OPIX_FUNC', 24 * 60 * 60 * 1000);
 
 PixelSetup.pixelFunc();

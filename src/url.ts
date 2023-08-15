@@ -2,8 +2,8 @@ export class Url {
   // http://stackoverflow.com/a/901144/1231563
   static getParameterByName(name: string, url?: string) {
     if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+    name = name.replace(/[[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
     results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';

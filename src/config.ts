@@ -1,4 +1,4 @@
-export var Config: Record<string, any> = {
+export const Config: Record<string, string | boolean | Object> = {
   id: '',
   params: {},
   version: '1.0.0',
