@@ -1,6 +1,6 @@
-class Url {
+export class Url {
   // http://stackoverflow.com/a/901144/1231563
-  static getParameterByName(name, url) {
+  static getParameterByName(name: string, url?: string) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
@@ -10,7 +10,7 @@ class Url {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
-  static externalHost(link) {
+  static externalHost(link: HTMLAnchorElement) {
     return link.hostname != location.hostname && link.protocol.indexOf('http') === 0;
   }
 }

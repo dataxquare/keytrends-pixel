@@ -1,21 +1,30 @@
-class Helper {
+import { Config } from './config';
+
+export class Helper {
   static isPresent(variable) {
-    return typeof(variable) !== 'undefined' && variable !== null && variable !== '';
+    return (
+      typeof variable !== 'undefined' && variable !== null && variable !== ''
+    );
   }
 
   static now() {
-    return 1 * new Date;
+    return new Date();
   }
 
   static guid() {
-    return Config.version + '-xxxxxxxx-'.replace(/[x]/g, function(c) {
-        var r = Math.random()*36|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return (
+      Config.version +
+      '-xxxxxxxx-'.replace(/[x]/g, function (c) {
+        const r = (Math.random() * 36) | 0,
+          v = c == 'x' ? r : (r & 0x3) | 0x8;
         return v.toString(36);
-    }) + (1 * new Date()).toString(36);
+      }) +
+      new Date().toString()
+    );
   }
 
   // reduces all optional data down to a string
-  static optionalData(data) {
+  static optionalData(data: string | object | Function | number | boolean): string{
     if (Helper.isPresent(data) === false) {
       return '';
     } else if (typeof data === 'object') {
@@ -27,5 +36,7 @@ class Helper {
     } else {
       return String(data);
     }
+
+    return '';
   }
 }
